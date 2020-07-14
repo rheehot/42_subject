@@ -94,5 +94,6 @@ int		print_X(t_list node, unsigned int num);
 size_t	ft_min(size_t num1, size_t num2);
 size_t	ft_max(size_t num1, size_t num2);
 void	ft_setspace(void *s, size_t n);
+char	*ft_undifitoa(int n);
 
 #endif
