@@ -13,6 +13,15 @@
 #include "libft.h"
 #include <stdio.h>
 
+static char	*is_zero(void)
+{
+	char *tmp;
+
+	tmp = malloc(1);
+	tmp[0] = 0;
+	return (tmp);
+}
+
 int	print_d(t_list node, int num)
 {
 	char	*print;
@@ -22,7 +31,12 @@ int	print_d(t_list node, int num)
 	char	*str_width;
 
 	init_node(&node);
-	print = ft_undifitoa(num);
+	if (node.length == 0 && num == 0 && node.precision == '.')
+		print = is_zero();
+	else
+	{
+		print = ft_undifitoa(num);
+	}
 	print_container = ft_max(ft_strlen(print), node.length);
 	if (num < 0)
 		print_width = ft_max(print_container + 1, node.width);
@@ -69,7 +83,7 @@ int	print_u(t_list node, unsigned int num)
 	char	*str_width;
 
 	init_node(&node);
-	print = ft_undifitoa((long long)num);
+	print = ft_undifuitoa(num);
 	print_container = ft_max(ft_strlen(print), node.length);
 	print_width = ft_max(print_container, node.width);
 

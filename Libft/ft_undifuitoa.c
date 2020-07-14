@@ -14,8 +14,8 @@
 
 static void	*init(unsigned int *n, int *len)
 {
-	char	*tmp;
-	int		num;
+	char			*tmp;
+	unsigned int	num;
 
 	*len = 0;
 	num = *n;
