@@ -82,10 +82,10 @@ int		pass_num(const char *str, size_t *idx);
 void	parse_init_node(t_list *node);
 void	init_node(t_list *node);
 void	make_node(t_list **start, t_list set_node);
-void	print_node(t_list point, va_list *ap);
+void	print_node(t_list point, va_list *ap, int *result);
 int		print_d(t_list node, int num);
 int		print_u(t_list node, unsigned int num);
-void	write_string(t_list *point, const char * str, va_list *ap);
+void	write_string(t_list *point, const char * str, va_list *ap, int *result);
 int		print_c(t_list node, char c);
 int		print_s(t_list node, char *print);
 char	*ft_itox(long long n, char alpha);
@@ -95,5 +95,6 @@ size_t	ft_min(size_t num1, size_t num2);
 size_t	ft_max(size_t num1, size_t num2);
 void	ft_setspace(void *s, size_t n);
 char	*ft_undifitoa(int n);
+char	*ft_undifuitoa(unsigned int n);
 
 #endif

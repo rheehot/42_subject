@@ -94,7 +94,7 @@ int		print_x(t_list node, unsigned int num)
 	ft_putstr_fd(str_width, 1);
 	free(str_width);
 
-	return (0);
+	return (print_width);
 }
 
 int		print_X(t_list node, unsigned int num)
@@ -132,6 +132,6 @@ char	*print;
 	ft_putstr_fd(str_width, 1);
 	free(str_width);
 
-	return (0);
+	return (print_width);
 }
 

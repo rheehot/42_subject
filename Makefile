@@ -13,7 +13,7 @@ SRCS	=	./Libft/ft_atoi.c ./Libft/ft_bzero.c ./Libft/ft_calloc.c ./Libft/ft_isaln
 			./ft_printf.c ft_parse.c ./ft_check_parse.c\
 			./print_diu.c ./print_cs.c ./print_xX.c\
 			./Libft/ft_lstadd_back.c ./Libft/ft_lstnew.c ./Libft/ft_max.c ./Libft/ft_setspace.c\
-			./Libft/ft_undifitoa.c
+			./Libft/ft_undifitoa.c ./Libft/ft_undifuitoa.c
 
 
 OBJS	=	$(SRCS:.c=.o)

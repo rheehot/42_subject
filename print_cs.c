@@ -52,7 +52,7 @@ int	print_c(t_list node, char c)
 	ft_putstr_fd(str_width, 1);
 	free(str_width);
 
-	return (0);
+	return (print_width);
 }
 
 void	set_length_str(size_t *container, size_t *width, t_list node, char *print)
@@ -106,5 +106,5 @@ int	print_s(t_list node, char *print)
 	ft_putstr_fd(str_width, 1);
 	free(str_width);
 
-	return (0);
+	return (print_width);
 }
