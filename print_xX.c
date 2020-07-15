@@ -68,6 +68,9 @@ int		print_x(t_list node, unsigned int num)
 	char	*str_container;
 	char	*str_width;
 
+	if (node.length < 0)
+		node.length = 0;
+
 	print = ft_itox((long long)num, 'a');
 	print_container = ft_max(ft_strlen(print), node.length);
 	print_width = ft_max(print_container, node.width);
@@ -103,7 +106,9 @@ int		print_X(t_list node, unsigned int num)
 	size_t	print_width;
 	char	*str_container;
 	char	*str_width;
-
+	
+	if (node.length < 0)
+		node.length = 0;
 	print = ft_itox((long long)num, 'A');
 	print_container = ft_max(ft_strlen(print), node.length);
 	print_width = ft_max(print_container, node.width);

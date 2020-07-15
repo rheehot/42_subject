@@ -18,7 +18,9 @@ int	print_c(t_list node, char c)
 	size_t	print_width;
 	char	*str_container;
 	char	*str_width;
-
+	
+	if (node.length < 0)
+		node.length = 0;
 	print_container = ft_max(1, node.length);
 	print_width = ft_max(print_container, node.width);
 

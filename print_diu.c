@@ -33,9 +33,11 @@ int	print_d(t_list node, int num)
 	if (node.length == 0 && num == 0 && node.precision == '.')
 		print = make_zero();
 	else
-	{
 		print = ft_undifitoa(num);
-	}
+	
+	if (node.length < 0)
+		node.length = 0;
+
 	print_container = ft_max(ft_strlen(print), node.length);
 	if (num < 0)
 		print_width = ft_max(print_container + 1, node.width);
@@ -45,9 +47,12 @@ int	print_d(t_list node, int num)
 	str_container = (char *)malloc(print_container);
 	str_width = (char *)malloc(print_width + 1);
 	if (node.flag == '0' || node.length > 0)
+	{
 		set_zero(str_container, print_container);
+	}
 	else
 		ft_setspace(str_container, print_container + 1);
+
 	ft_setspace(str_width, print_width + 1);
 	str_width[print_width] = 0;
 	ft_memmove(&str_container[print_container - ft_strlen(print)], print, ft_strlen(print));
@@ -82,7 +87,13 @@ int	print_u(t_list node, unsigned int num)
 	char	*str_container;
 	char	*str_width;
 
-	print = ft_undifuitoa(num);
+	if (node.length == 0 && num == 0 && node.precision == '.')
+		print = make_zero();
+	else
+		print = ft_undifuitoa(num);
+	if (node.length < 0)
+		node.length = 0;
+
 	print_container = ft_max(ft_strlen(print), node.length);
 	print_width = ft_max(print_container, node.width);
 
