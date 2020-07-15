@@ -22,6 +22,8 @@ t_list	*ft_lstnew(t_list set_node)
 	node->precision = set_node.precision;
 	node->length = set_node.length;
 	node->specifier = set_node.specifier;
+	node->b_width = set_node.b_width;
+	node->b_length = set_node.b_length;
 	node->next = 0;
 	return (node);
 }

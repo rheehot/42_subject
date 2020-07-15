@@ -15,20 +15,19 @@
 
 void	print_node(t_list point, va_list *ap, int *result)
 {
-
-	if (point.width == -1)
+	if (point.b_width == 1)
 		point.width = va_arg(*ap, int);
-	if (point.length == -1)
+	if (point.b_length == 1)
 		point.length = va_arg(*ap, int);
 
 	if (point.specifier != 's')
 	{
-		if (point.width < 0 && point.width != -2)
+		if (point.width < 0 && point.b_width == 1)
 		{
 			point.width *= -1;
 			point.flag = '-';
 		}
-		if (point.length < 0 && point.length != -2)
+		if (point.length < 0 && point.b_length == 1)
 		{
 			point.length *= -1;
 			point.flag = '-';
@@ -36,13 +35,11 @@ void	print_node(t_list point, va_list *ap, int *result)
 	}
 	else
 	{
-		if (point.width < 0 && point.width != -2)
+		if (point.width < 0 && point.b_width == 0)
 		{
 			point.width *= -1;
 			point.flag = '-';
 		}
-		if (point.length < 0 && point.length != -2)
-			point.length = -2;
 	}
 
 	if (point.specifier == 'd' || point.specifier == 'i')

@@ -14,9 +14,9 @@
 
 void	init_node(t_list *node)
 {
-	if (node->width == -2)
+	if (node->b_width == 0)
 		node->width = 0;
-	if (node->length == -2)
+	if (node->b_length == 0)
 		node->length = 0;
 }
 
@@ -59,9 +59,9 @@ void	set_length_str(size_t *container, size_t *width, t_list node, char *print)
 {
 	int len_c;
 
-	if (node.length == -2)
+	if (node.b_length == 0)
 		node.length = (int)ft_strlen(print);
-	if (node.width == -2)
+	if (node.b_width == 0)
 		node.width = 0;
 
 	if (node.length > (int)ft_strlen(print))
