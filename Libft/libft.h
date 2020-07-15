@@ -24,6 +24,8 @@ struct	s_list
 	char			precision;
 	int				length;
 	char			specifier;
+	int				s_width;
+	int				s_length;
 	struct s_list	*next;
 };
 typedef struct s_list	t_list;
@@ -78,7 +80,7 @@ int		is_precision(char c);
 int		is_length(char c);
 int		is_specifier(char c);
 void	ft_parse(const char *str, t_list **start);
-int		pass_num(const char *str, size_t *idx);
+void	pass_num(const char *str, size_t *idx, t_list *node, int is_width);
 void	parse_init_node(t_list *node);
 void	init_node(t_list *node);
 void	make_node(t_list **start, t_list set_node);

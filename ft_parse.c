@@ -13,7 +13,7 @@
 #include "libft.h"
 #include <stdio.h>
 
-int		pass_num(const char *str, size_t *idx)
+void	pass_num(const char *str, size_t *idx, t_list *node, int is_width)
 {
 	int ans;
 
@@ -21,7 +21,17 @@ int		pass_num(const char *str, size_t *idx)
 	if (str[*idx] == '*')
 	{
 		*idx = *idx + 1;
-		return (-1);
+		if (is_width)
+		{
+			node->s_width = 1;
+			node->width = 1;
+		}
+		else
+		{
+			node->s_length = 1;
+			node->length = 1;
+		}
+		return ;
 	}
 	while (str[*idx] != 0)
 	{
@@ -30,17 +40,26 @@ int		pass_num(const char *str, size_t *idx)
 		ans = ans * 10 + str[*idx] - '0';
 		*idx = *idx + 1;
 	}
-	return (ans);
+	if (is_width)
+	{
+		node->width = ans;
+	}
+	else
+	{
+		node->length = ans;
+	}
 }
 
 void	parse_init_node(t_list *node)
 {
 	node->flag = 0;
-	node->width = -2;
+	node->width = 0;
 	node->precision = 0;
-	node->length = -2;
+	node->length = 0;
 	node->specifier = 0;
 	node->next = 0;
+	node->s_width = 0;
+	node->s_length = 0;
 }
 
 void	make_node(t_list **start, t_list set_node)
@@ -70,14 +89,14 @@ void	ft_parse(const char *str, t_list **start)
 			set_node.flag = str[i];
 		else if (state && is_width(str[i]) && set_node.precision == 0)
 		{
-			set_node.width = pass_num(str, &i);
+			pass_num(str, &i, &set_node, 1);
 			continue ;
 		}
 		else if (state && is_precision(str[i]))
 			set_node.precision = str[i];
 		else if (state && is_length(str[i]) && set_node.precision != 0)
 		{
-			set_node.length = pass_num(str, &i);
+			pass_num(str, &i, &set_node, 0);
 			continue ;
 		}
 		else if (state && is_specifier(str[i]))
