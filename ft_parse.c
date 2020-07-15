@@ -22,15 +22,9 @@ void	pass_num(const char *str, size_t *idx, t_list *node, int is_width)
 	{
 		*idx = *idx + 1;
 		if (is_width)
-		{
 			node->s_width = 1;
-			node->width = 1;
-		}
 		else
-		{
 			node->s_length = 1;
-			node->length = 1;
-		}
 		return ;
 	}
 	while (str[*idx] != 0)
@@ -41,13 +35,9 @@ void	pass_num(const char *str, size_t *idx, t_list *node, int is_width)
 		*idx = *idx + 1;
 	}
 	if (is_width)
-	{
 		node->width = ans;
-	}
 	else
-	{
 		node->length = ans;
-	}
 }
 
 void	parse_init_node(t_list *node)

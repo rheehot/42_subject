@@ -16,6 +16,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdarg.h>
+# include <stdio.h>
 
 struct	s_list
 {
@@ -82,7 +83,6 @@ int		is_specifier(char c);
 void	ft_parse(const char *str, t_list **start);
 void	pass_num(const char *str, size_t *idx, t_list *node, int is_width);
 void	parse_init_node(t_list *node);
-void	init_node(t_list *node);
 void	make_node(t_list **start, t_list set_node);
 void	print_node(t_list point, va_list *ap, int *result);
 int		print_d(t_list node, int num);
@@ -98,5 +98,6 @@ size_t	ft_max(size_t num1, size_t num2);
 void	ft_setspace(void *s, size_t n);
 char	*ft_undifitoa(int n);
 char	*ft_undifuitoa(unsigned int n);
+void	set_zero(void *s, size_t n);
 
 #endif

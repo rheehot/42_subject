@@ -23,25 +23,24 @@ void	print_node(t_list point, va_list *ap, int *result)
 
 	if (point.specifier != 's')
 	{
-		if (point.s_width == 1)
+		if (point.width < 0)
 		{
 			point.width *= -1;
 			point.flag = '-';
 		}
-		if (point.s_length == 1)
+		if (point.length < 0)
 		{
-			point.length *= -1;
-			point.flag = '-';
+			point.length = 0;
 		}
 	}
 	else
 	{
-		if (point.s_width == 1)
+		if (point.width < 0)
 		{
 			point.width *= -1;
 			point.flag = '-';
 		}
-		if (point.s_length == 1)
+		if (point.length < 0)
 			point.length = 0;
 	}
 
