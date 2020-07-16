@@ -99,5 +99,6 @@ void	ft_setspace(void *s, size_t n);
 char	*ft_undifitoa(int n);
 char	*ft_undifuitoa(unsigned int n);
 void	set_zero(void *s, size_t n);
+char	*make_zero(void);
 
 #endif
