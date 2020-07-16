@@ -68,12 +68,44 @@ int		print_x(t_list node, unsigned int num)
 	char	*str_container;
 	char	*str_width;
 
-	if (node.length < 0)
-		node.length = 0;
+	// if (node.length < 0)
+	// 	node.length = 0;
 
-	print = ft_itox((long long)num, 'a');
+	// print = ft_itox((long long)num, 'a');
+
+
+	// print_container = ft_max(ft_strlen(print), node.length);
+	// print_width = ft_max(print_container, node.width);
+
+	///
+	if (node.length == 0 && num == 0 && node.precision == '.')
+		print = make_zero();
+	else
+		print = ft_itox((long long)num, 'a');
+	
+	if (node.length < 0)
+	{
+		node.length = 0;
+		node.precision = 0;
+	}
+
 	print_container = ft_max(ft_strlen(print), node.length);
-	print_width = ft_max(print_container, node.width);
+	if (num < 0)
+		print_width = ft_max(print_container + 1, node.width);
+	else
+		print_width = ft_max(print_container, node.width);
+
+	if (node.flag == '0' && node.precision != '.')
+	{
+		if (num < 0)
+			print_container = print_width - 1;
+		else
+			print_container = print_width;
+	}
+
+	///
+
+
 
 	str_container = (char *)malloc(print_container);
 	str_width = (char *)malloc(print_width + 1);
@@ -107,11 +139,38 @@ int		print_X(t_list node, unsigned int num)
 	char	*str_container;
 	char	*str_width;
 	
+	// if (node.length < 0)
+	// 	node.length = 0;
+	// print = ft_itox((long long)num, 'A');
+	// print_container = ft_max(ft_strlen(print), node.length);
+	// print_width = ft_max(print_container, node.width);
+
+	//
+	if (node.length == 0 && num == 0 && node.precision == '.')
+		print = make_zero();
+	else
+		print = ft_itox((long long)num, 'A');
+	
 	if (node.length < 0)
+	{
 		node.length = 0;
-	print = ft_itox((long long)num, 'A');
+		node.precision = 0;
+	}
+
 	print_container = ft_max(ft_strlen(print), node.length);
-	print_width = ft_max(print_container, node.width);
+	if (num < 0)
+		print_width = ft_max(print_container + 1, node.width);
+	else
+		print_width = ft_max(print_container, node.width);
+
+	if (node.flag == '0' && node.precision != '.')
+	{
+		if (num < 0)
+			print_container = print_width - 1;
+		else
+			print_container = print_width;
+	}
+	//
 
 	str_container = (char *)malloc(print_container);
 	str_width = (char *)malloc(print_width + 1);

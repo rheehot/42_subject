@@ -36,8 +36,6 @@ void	print_node(t_list point, va_list *ap, int *result)
 			point.width *= -1;
 			point.flag = '-';
 		}
-		if (point.length < 0)
-			point.length = 0;
 	}
 
 	if (point.specifier == 'd' || point.specifier == 'i')

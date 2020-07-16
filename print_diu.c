@@ -13,15 +13,6 @@
 #include "libft.h"
 #include <stdio.h>
 
-static char	*make_zero(void)
-{
-	char *tmp;
-
-	tmp = malloc(1);
-	tmp[0] = 0;
-	return (tmp);
-}
-
 int	print_d(t_list node, int num)
 {
 	char	*print;

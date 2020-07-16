@@ -52,10 +52,26 @@ void	set_length_str(size_t *container, size_t *width, t_list node, char *print)
 {
 	int len_c;
 
+	// printf("node.length : %d ", node.length);
+	if (node.length == 0 && node.precision == '.')
+	{
+		print = make_zero();
+		*container = 0;
+		*width = ft_max(*container, node.width);
+		// printf("!");
+		return ;
+	}
+
+	if (node.length < 0)
+	{
+		node.length = 0;
+		node.precision = 0;
+		node.length = (int)ft_strlen(print);
+		// printf("?");
+	}
+	
 	if (node.s_length == 0)
 		node.length = (int)ft_strlen(print);
-	if (node.s_width == 0)
-		node.width = 0;
 
 	if (node.length > (int)ft_strlen(print))
 	{
@@ -78,6 +94,9 @@ int	print_s(t_list node, char *print)
 	char	*str_width;
 
 	set_length_str(&print_container, &print_width, node, print);
+
+	// printf("node.width %d node.length %d ", node.width, node.length);
+	// printf("print_container %zu print_width %zu ", print_container, print_width);
 
 	str_container = (char *)malloc(print_container);
 	str_width = (char *)malloc(print_width + 1);
