@@ -15,6 +15,7 @@
 
 void	print_node(t_list point, va_list *ap, int *result)
 {
+	char *tmp;
 
 	if (point.s_width == 1)
 		point.width = va_arg(*ap, int);
@@ -45,7 +46,13 @@ void	print_node(t_list point, va_list *ap, int *result)
 	else if (point.specifier == 'c')
 		*result += print_c(point, (char)va_arg(*ap, int));
 	else if (point.specifier == 's')
-		*result += print_s(point, va_arg(*ap, char*));
+	{
+		tmp = va_arg(*ap, char*);
+		if (tmp == 0)
+			*result += print_s(point, "(null)");
+		else
+			*result += print_s(point, tmp);
+	}
 	else if (point.specifier == 'x')
 		*result += print_x(point, va_arg(*ap, unsigned int));
 	else if (point.specifier == 'X')
@@ -53,10 +60,7 @@ void	print_node(t_list point, va_list *ap, int *result)
 	else if (point.specifier == '%')
 		*result += print_c(point, '%');
 	else if (point.specifier == 'p')
-	{
-		write(1, "0x", 2);
-		*result += print_x(point, va_arg(*ap, unsigned int)) + 2;
-	}
+		*result += print_p(point, (long long)va_arg(*ap, void *));
 }
 
 void	write_string(t_list *point, const char * str, va_list *ap, int *result)

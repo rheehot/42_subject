@@ -33,7 +33,11 @@ int	print_c(t_list node, char c)
 		ft_setspace(str_container, print_container + 1);
 	ft_setspace(str_width, print_width + 1);
 	str_width[print_width] = 0;
-	str_container[0] = c;
+
+	if (c == 0)
+		str_container[0] = 0;
+	else
+		str_container[0] = c;
 
 	ft_memmove(&str_container[print_container - 1], &c, 1);
 	if (node.flag == '-')
@@ -42,7 +46,10 @@ int	print_c(t_list node, char c)
 		ft_memmove(&str_width[print_width - print_container], str_container, print_container);
 	free(str_container);
 
-	ft_putstr_fd(str_width, 1);
+	if(c == 0)
+		ft_putzero_fd(str_width, 1);
+	else
+		ft_putstr_fd(str_width, 1);
 	free(str_width);
 
 	return (print_width);
@@ -70,7 +77,7 @@ void	set_length_str(size_t *container, size_t *width, t_list node, char *print)
 		// printf("?");
 	}
 	
-	if (node.s_length == 0)
+	if (node.s_length == 0 && node.length == 0)
 		node.length = (int)ft_strlen(print);
 
 	if (node.length > (int)ft_strlen(print))

@@ -100,5 +100,8 @@ char	*ft_undifitoa(int n);
 char	*ft_undifuitoa(unsigned int n);
 void	set_zero(void *s, size_t n);
 char	*make_zero(void);
+int		print_p(t_list node, long long num);
+char	*ft_lltoa_base(long long nbr, char *base);
+void	ft_putzero_fd(char *s, int fd);
 
 #endif
