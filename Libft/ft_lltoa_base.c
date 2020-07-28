@@ -16,6 +16,7 @@ static int	cal_size(long long nbr, char *base)
 {
 	int		size;
 	int		base_size;
+
 	size = 0;
 	base_size = ft_strlen(base);
 	if (nbr < 0)
@@ -32,10 +33,12 @@ static int	cal_size(long long nbr, char *base)
 	}
 	return (size);
 }
+
 static char	*ft_convert(char *result, long long nbr, char *base, int base_size)
 {
 	int		i;
 	int		is_minus;
+
 	i = 0;
 	is_minus = 0;
 	result = (char *)malloc(sizeof(char) * (cal_size(nbr, base) + 1));
@@ -59,11 +62,13 @@ static char	*ft_convert(char *result, long long nbr, char *base, int base_size)
 	}
 	return (result);
 }
+
 static char	*ft_reverse(char *str)
 {
 	char	temp;
 	int		i;
 	int		size;
+
 	i = 0;
 	size = ft_strlen(str);
 	while (i < size / 2)

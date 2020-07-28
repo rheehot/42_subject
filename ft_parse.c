@@ -80,10 +80,8 @@ void	ft_parse(const char *str, t_list **start)
 			flag = 1;
 			continue ;
 		}
-		
 		if (is_flag(str[i]) == 0)
 			flag = 0;
-
 		if (state && is_flag(str[i]) && flag)
 		{
 			if (set_node.flag == 0)
