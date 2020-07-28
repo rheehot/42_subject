@@ -20,9 +20,25 @@ int	print_c(t_list node, char c)
 	char	*str_width;
 	
 	if (node.length < 0)
+	{
 		node.length = 0;
+		node.precision = 0;
+	}
+
+
+
+
+	
 	print_container = ft_max(1, node.length);
+
 	print_width = ft_max(print_container, node.width);
+
+	if (node.flag == '0' && node.precision != '.')
+	{
+		print_container = print_width;
+	}
+
+
 
 	str_container = (char *)malloc(print_container);
 	str_width = (char *)malloc(print_width + 1);
