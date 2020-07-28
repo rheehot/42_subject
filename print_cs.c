@@ -24,10 +24,6 @@ int	print_c(t_list node, char c)
 		node.length = 0;
 		node.precision = 0;
 	}
-
-
-
-
 	
 	print_container = ft_max(1, node.length);
 
@@ -128,7 +124,11 @@ int	print_s(t_list node, char *print)
 		set_zero(str_container, print_container);
 	else
 		ft_setspace(str_container, print_container + 1);
-	ft_setspace(str_width, print_width + 1);
+
+	if (node.flag == '0')
+		set_zero(str_width, print_width+1);
+	else
+		ft_setspace(str_width, print_width + 1);
 	str_width[print_width] = 0;
 
 	ft_memmove(&str_container[0], print, print_container);
