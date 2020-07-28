@@ -64,19 +64,33 @@ void	ft_parse(const char *str, t_list **start)
 {
 	size_t	i;
 	int		state;
+	int		flag;
 	t_list	set_node;
 
 	i = 0;
 	state = 0;
+	flag = 0;
 	while (str[i] != 0)
 	{
 		if (state == 0 && str[i] == '%')
 		{
 			state = 1;
 			parse_init_node(&set_node);
+			i++;
+			flag = 1;
+			continue ;
 		}
-		else if (state && str[i - 1] == '%' && is_flag(str[i]))
-			set_node.flag = str[i];
+		
+		if (is_flag(str[i]) == 0)
+			flag = 0;
+
+		if (state && is_flag(str[i]) && flag)
+		{
+			if (set_node.flag == 0)
+				set_node.flag = str[i];
+			else if (str[i] == '-')
+				set_node.flag = str[i];
+		}
 		else if (state && is_width(str[i]) && set_node.precision == 0)
 		{
 			pass_num(str, &i, &set_node, 1);
