@@ -13,31 +13,29 @@
 #include <stdarg.h>
 #include "libft.h"
 
-void	print_node(t_list point, va_list *ap, int *result)
+static void	check1(t_list *point)
 {
-	char *tmp;
-
-	if (point.s_width == 1)
-		point.width = va_arg(*ap, int);
-	if (point.s_length == 1)
-		point.length = va_arg(*ap, int);
-
-	if (point.specifier != 's')
+	if (point->specifier != 's')
 	{
-		if (point.width < 0)
+		if (point->width < 0)
 		{
-			point.width *= -1;
-			point.flag = '-';
+			point->width *= -1;
+			point->flag = '-';
 		}
 	}
 	else
 	{
-		if (point.width < 0)
+		if (point->width < 0)
 		{
-			point.width *= -1;
-			point.flag = '-';
+			point->width *= -1;
+			point->flag = '-';
 		}
 	}
+}
+
+static void	check2(t_list point, va_list *ap, int *result)
+{
+	char *tmp;
 
 	if (point.specifier == 'd' || point.specifier == 'i')
 		*result += print_d(point, va_arg(*ap, int));
@@ -63,7 +61,17 @@ void	print_node(t_list point, va_list *ap, int *result)
 		*result += print_p(point, (long long)va_arg(*ap, void *));
 }
 
-void	write_string(t_list *point, const char * str, va_list *ap, int *result)
+void		print_node(t_list point, va_list *ap, int *result)
+{
+	if (point.s_width == 1)
+		point.width = va_arg(*ap, int);
+	if (point.s_length == 1)
+		point.length = va_arg(*ap, int);
+	check1(&point);
+	check2(point, ap, result);
+}
+
+void		write_string(t_list *p, const char *str, va_list *ap, int *r)
 {
 	int	i;
 	int	state;
@@ -75,13 +83,13 @@ void	write_string(t_list *point, const char * str, va_list *ap, int *result)
 		if (state == 0 && str[i] == '%')
 		{
 			state = 1;
-			print_node(*point, ap, result);
-			point = point->next;
+			print_node(*p, ap, r);
+			p = p->next;
 		}
 		else if (state == 0)
 		{
 			ft_putchar_fd(str[i], 1);
-			*result += 1;
+			*r += 1;
 		}
 		else if (state && is_specifier(str[i]))
 			state = 0;
@@ -89,7 +97,7 @@ void	write_string(t_list *point, const char * str, va_list *ap, int *result)
 	}
 }
 
-int	ft_printf(const char * format, ... )
+int			ft_printf(const char *format, ...)
 {
 	t_list		*print_node;
 	va_list		ap;
@@ -99,9 +107,7 @@ int	ft_printf(const char * format, ... )
 	va_start(ap, format);
 	print_node = 0;
 	ft_parse(format, &print_node);
-
 	write_string(print_node, format, &ap, &result);
-
 	va_end(ap);
 	return (result);
 }

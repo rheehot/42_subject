@@ -10,5 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef LIBPRINTF_H
+# define LIBPRINTF_H
 
-int	ft_printf(const char * format, ... );
+int	ft_printf(const char *format, ...);
+
+#endif

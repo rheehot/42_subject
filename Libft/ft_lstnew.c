@@ -27,3 +27,23 @@ t_list	*ft_lstnew(t_list set_node)
 	node->next = 0;
 	return (node);
 }
+
+void	parse_init_node(t_list *node)
+{
+	node->flag = 0;
+	node->width = 0;
+	node->precision = 0;
+	node->length = 0;
+	node->specifier = 0;
+	node->next = 0;
+	node->s_width = 0;
+	node->s_length = 0;
+}
+
+void	make_node(t_list **start, t_list set_node)
+{
+	t_list *tmp;
+
+	tmp = ft_lstnew(set_node);
+	ft_lstadd_back(start, tmp);
+}
