@@ -56,7 +56,7 @@ void	print_node(t_list point, va_list *ap, int *result)
 	else if (point.specifier == 'x')
 		*result += print_x(point, va_arg(*ap, unsigned int));
 	else if (point.specifier == 'X')
-		*result += print_X(point, va_arg(*ap, unsigned int));
+		*result += print_xx(point, va_arg(*ap, unsigned int));
 	else if (point.specifier == '%')
 		*result += print_c(point, '%');
 	else if (point.specifier == 'p')
