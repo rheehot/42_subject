@@ -31,7 +31,7 @@ struct	s_list
 };
 typedef struct s_list	t_list;
 
-struct s_send1
+struct	s_send1
 {
 	int			*state;
 	const char	*str;
@@ -40,7 +40,7 @@ struct s_send1
 };
 typedef struct s_send1	t_send1;
 
-struct s_send2
+struct	s_send2
 {
 	size_t	*printc;
 	size_t	*printw;

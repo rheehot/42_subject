@@ -109,5 +109,6 @@ int			ft_printf(const char *format, ...)
 	ft_parse(format, &print_node);
 	write_string(print_node, format, &ap, &result);
 	va_end(ap);
+	ft_lstclear(&print_node);
 	return (result);
 }

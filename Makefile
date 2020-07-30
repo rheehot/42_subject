@@ -1,6 +1,6 @@
 CC		=	gcc
 INC		=	-I ./Libft/
-CFLAGS	=	-Wall -Wextra -Werror $(INC)
+CFLAGS	=	-Wall -Wextra -Werror $(INC) -g
 
 SRCS	=	./Libft/ft_atoi.c ./Libft/ft_bzero.c ./Libft/ft_calloc.c ./Libft/ft_isalnum.c ./Libft/ft_isalpha.c\
 			./Libft/ft_isascii.c ./Libft/ft_isdigit.c ./Libft/ft_isprint.c ./Libft/ft_itoa.c ./Libft/ft_memccpy.c\
@@ -12,7 +12,7 @@ SRCS	=	./Libft/ft_atoi.c ./Libft/ft_bzero.c ./Libft/ft_calloc.c ./Libft/ft_isaln
 			./Libft/ft_toupper.c\
 			./ft_printf.c ft_parse.c ./ft_check_parse.c\
 			./print_d.c ./print_u.c ./print_c.c ./print_s.c ./print_x.c ./print_xx.c ./print_x_util.c\
-			./Libft/ft_lstadd_back.c ./Libft/ft_lstnew.c ./Libft/ft_max.c ./Libft/ft_setspace.c\
+			./Libft/ft_lstadd_back.c ./Libft/ft_lstnew.c ./Libft/ft_lstclear.c ./Libft/ft_max.c ./Libft/ft_setspace.c\
 			./Libft/ft_undifitoa.c ./Libft/ft_undifuitoa.c ./print_p.c ./Libft/ft_lltoa_base.c ./Libft/ft_putzero_fd.c
 
 
