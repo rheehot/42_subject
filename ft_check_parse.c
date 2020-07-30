@@ -46,7 +46,7 @@ int	is_length(char c)
 
 int	is_specifier(char c)
 {
-	if (c == 'c' || c == 's' ||  c == 'p' || \
+	if (c == 'c' || c == 's' || c == 'p' || \
 		c == 'd' || c == 'i' || c == 'u' || \
 		c == 'x' || c == 'X' || c == '%')
 		return (1);

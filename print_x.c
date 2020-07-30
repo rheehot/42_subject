@@ -1,40 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_p.c                                          :+:      :+:    :+:   */
+/*   print_x.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seongpar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/16 20:08:28 by seongpar          #+#    #+#             */
-/*   Updated: 2020/07/16 20:08:32 by seongpar         ###   ########.fr       */
+/*   Created: 2020/07/30 16:53:22 by seongpar          #+#    #+#             */
+/*   Updated: 2020/07/30 16:53:25 by seongpar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void	check1(t_list *node, long long num, char **print, t_send2 s)
+static void	check1(t_list *node, unsigned int num, char **print)
 {
 	if (node->length == 0 && num == 0 && node->precision == '.')
 		*print = make_zero();
 	else
-		*print = ft_lltoa_base(num, "0123456789abcdef");
+		*print = ft_itox((long long)num, 'a');
 	if (node->length < 0)
 	{
 		node->length = 0;
 		node->precision = 0;
 	}
-	*s.printc = ft_max(ft_strlen(*print), node->length) + 2;
+}
+
+static void	check2(t_list *node, unsigned int num, t_send2 s)
+{
+	char	*p;
+
+	check1(node, num, &p);
+	*s.printc = ft_max(ft_strlen(p), node->length);
 	if (num < 0)
 		*s.printw = ft_max(*s.printc + 1, node->width);
 	else
 		*s.printw = ft_max(*s.printc, node->width);
-}
-
-static void	check2(t_list *node, long long num, t_send2 s)
-{
-	char	*p;
-
-	check1(node, num, &p, s);
 	if (node->flag == '0' && node->precision != '.')
 	{
 		if (num < 0)
@@ -48,8 +48,6 @@ static void	check2(t_list *node, long long num, t_send2 s)
 		set_zero(*s.strc, *s.printc);
 	else
 		ft_setspace(*s.strc, *s.printc + 1);
-	(*s.strc)[0] = '0';
-	(*s.strc)[1] = 'x';
 	ft_setspace(*s.strw, *s.printw + 1);
 	(*s.strw)[*s.printw] = 0;
 	ft_memmove(&((*s.strc)[*s.printc - ft_strlen(p)]), p, ft_strlen(p));
@@ -67,7 +65,7 @@ static void	check3(t_list node, t_send2 s)
 	free(*s.strw);
 }
 
-int			print_p(t_list node, long long num)
+int			print_x(t_list node, unsigned int num)
 {
 	t_send2	send;
 	size_t	print_container;
