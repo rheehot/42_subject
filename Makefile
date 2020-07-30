@@ -11,7 +11,7 @@ SRCS	=	./Libft/ft_atoi.c ./Libft/ft_bzero.c ./Libft/ft_calloc.c ./Libft/ft_isaln
 			./Libft/ft_strnstr.c ./Libft/ft_strrchr.c ./Libft/ft_strtrim.c ./Libft/ft_substr.c ./Libft/ft_tolower.c\
 			./Libft/ft_toupper.c\
 			./ft_printf.c ft_parse.c ./ft_check_parse.c\
-			./print_diu.c ./print_c.c ./print_s.c ./print_xX.c\
+			./print_d.c ./print_u.c ./print_c.c ./print_s.c ./print_xX.c\
 			./Libft/ft_lstadd_back.c ./Libft/ft_lstnew.c ./Libft/ft_max.c ./Libft/ft_setspace.c\
 			./Libft/ft_undifitoa.c ./Libft/ft_undifuitoa.c ./print_p.c ./Libft/ft_lltoa_base.c ./Libft/ft_putzero_fd.c
 
