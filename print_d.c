@@ -12,6 +12,20 @@
 
 #include "libft.h"
 
+static void	check1(t_list *node, int num, char **print)
+{
+	if (node->length == 0 && num == 0 && node->precision == '.')
+		*print = make_zero();
+	else
+		*print = ft_undifitoa(num);
+	
+	if (node->length < 0)
+	{
+		node->length = 0;
+		node->precision = 0;
+	}
+}
+
 int	print_d(t_list node, int num)
 {
 	char	*print;
@@ -20,16 +34,7 @@ int	print_d(t_list node, int num)
 	char	*str_container;
 	char	*str_width;
 
-	if (node.length == 0 && num == 0 && node.precision == '.')
-		print = make_zero();
-	else
-		print = ft_undifitoa(num);
-	
-	if (node.length < 0)
-	{
-		node.length = 0;
-		node.precision = 0;
-	}
+	check1(&node, num, &print);
 
 	print_container = ft_max(ft_strlen(print), node.length);
 	if (num < 0)
