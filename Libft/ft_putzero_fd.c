@@ -1,20 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_max.c                                           :+:      :+:    :+:   */
+/*   ft_putzero_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seongpar <seongpar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: seongpar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/14 10:40:50 by seongpar          #+#    #+#             */
-/*   Updated: 2020/03/14 10:41:07 by seongpar         ###   ########.fr       */
+/*   Created: 2020/07/19 18:14:51 by seongpar          #+#    #+#             */
+/*   Updated: 2020/07/19 18:14:52 by seongpar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_max(size_t num1, size_t num2)
+void	ft_putzero_fd(char *s, int fd)
 {
-	if (num1 < num2)
-		return (num2);
-	return (num1);
+	int i;
+
+	i = 0;
+	while (s[i] != 0)
+	{
+		write(fd, &s[i], 1);
+		i++;
+	}
+	write(fd, "\0", 1);
+	i++;
+	while (s[i] != 0)
+	{
+		write(fd, &s[i], 1);
+		i++;
+	}
 }

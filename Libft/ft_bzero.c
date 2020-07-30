@@ -16,3 +16,17 @@ void	ft_bzero(void *s, size_t n)
 {
 	ft_memset(s, 0, n);
 }
+
+void	set_zero(void *s, size_t n)
+{
+	ft_memset(s, '0', n);
+}
+
+char	*make_zero(void)
+{
+	char *tmp;
+
+	tmp = malloc(1);
+	tmp[0] = 0;
+	return (tmp);
+}

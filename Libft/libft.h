@@ -16,6 +16,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdarg.h>
+# include <stdio.h>
 
 struct	s_list
 {
@@ -24,9 +25,29 @@ struct	s_list
 	char			precision;
 	int				length;
 	char			specifier;
+	int				s_width;
+	int				s_length;
 	struct s_list	*next;
 };
 typedef struct s_list	t_list;
+
+struct s_send1
+{
+	int			*state;
+	const char	*str;
+	size_t		*i;
+	int			flag;
+};
+typedef struct s_send1	t_send1;
+
+struct s_send2
+{
+	size_t	*printc;
+	size_t	*printw;
+	char	**strc;
+	char	**strw;
+};
+typedef struct s_send2	t_send2;
 
 char	*ft_strdup(const char *s);
 size_t	ft_strlcat(char *dest, const char *src, size_t size);
@@ -78,23 +99,27 @@ int		is_precision(char c);
 int		is_length(char c);
 int		is_specifier(char c);
 void	ft_parse(const char *str, t_list **start);
-int		pass_num(const char *str, size_t *idx);
+void	pass_num(const char *str, size_t *idx, t_list *node, int is_width);
 void	parse_init_node(t_list *node);
-void	init_node(t_list *node);
 void	make_node(t_list **start, t_list set_node);
 void	print_node(t_list point, va_list *ap, int *result);
 int		print_d(t_list node, int num);
 int		print_u(t_list node, unsigned int num);
-void	write_string(t_list *point, const char * str, va_list *ap, int *result);
+void	write_string(t_list *point, const char *str, va_list *ap, int *result);
 int		print_c(t_list node, char c);
 int		print_s(t_list node, char *print);
 char	*ft_itox(long long n, char alpha);
 int		print_x(t_list node, unsigned int num);
-int		print_X(t_list node, unsigned int num);
+int		print_xx(t_list node, unsigned int num);
 size_t	ft_min(size_t num1, size_t num2);
 size_t	ft_max(size_t num1, size_t num2);
 void	ft_setspace(void *s, size_t n);
 char	*ft_undifitoa(int n);
 char	*ft_undifuitoa(unsigned int n);
+void	set_zero(void *s, size_t n);
+char	*make_zero(void);
+int		print_p(t_list node, long long num);
+char	*ft_lltoa_base(long long nbr, char *base);
+void	ft_putzero_fd(char *s, int fd);
 
 #endif
